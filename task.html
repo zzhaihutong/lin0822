@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 写完作业
+        const arr = new Array();
+        for (var i = 0; i <= 100; i++) {
+            arr.push(i);
+        }
+        let sum = arr.reduce(function(acc, value) {
+            return acc + value;
+        }, 0);
+        // console.log(sum);
+
+        function process(url) {
+            //.... 使用reduce
+            let arr = [];
+            url = url.slice(url.indexOf("?") + 1, url.indexOf("#"));
+            arr = url.split("&");
+            return arr.reduce(function(acc, value) {
+                let [key, val] = value.split("=");
+                acc[key] = val;
+                return acc;
+            }, {});
+        }
+
+        console.log(
+            process("http://www.baidu.com/?name=zhangsan&age=18&sex=nan#")
+        );
+    </script>
+</body>
+
+</html>
